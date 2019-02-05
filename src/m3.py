@@ -1,18 +1,16 @@
 """
 This module lets you practice DEBUGGING when LOGIC ERRORS occur.
-
 That is, no run-time exception occurs, but the function simply
 does not do the right thing.
-
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Valerie Galluzzi, Mark Hays, Amanda Stouder, Aaron Wilkin,
-         their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues, and Kash.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
 ###############################################################################
 #
-# TODO: 2. READ these instructions, ASKING QUESTIONS as needed.
+# DONE: 2. READ these instructions, ASKING QUESTIONS as needed.
 #
 #   This module contains "broken" functions, as in m1 and m2.
 #   FOLLOW THE SAME STEPS as in the instructions of m1.py
@@ -42,6 +40,7 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
 
 def main():
     """ Calls the   TEST   functions in this module. """
+    run_test_broken_1()
 
 
 ###############################################################################
@@ -100,7 +99,7 @@ def run_test_broken_1():
 
 
 # -----------------------------------------------------------------------------
-# TODO: 3. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
+#  DONE: 3. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
 #          to correct the mistake(s) in the following function.
 # -----------------------------------------------------------------------------
 def broken_1(m):
@@ -112,22 +111,23 @@ def broken_1(m):
     Examples:
       If m is 3, this function returns 3 since there
         are 3 primes between 3 and 7 (namely: 3, 5, and 7).
-        
+
       If m is 10, then this function returns 4 since there
         are 4 primes between 10 and 21 (namely: 11, 13, 17 and 19).
-
     Type hints:
       :type m: int
     """
     #    **  For full credit you must appropriately
     #    **  use (call) the   is_prime   function that is DEFINED ABOVE.
     count = 0
-    for k in range(2 * m):
-        if is_prime(m):
+    for k in range(m, (2 * m+2)):
+        if is_prime(k) == True:
             count = count + 1
+    return (count)
+
 
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
-    main()
+main()

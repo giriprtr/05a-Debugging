@@ -5,17 +5,16 @@ focusing here on AttributeError exceptions:
   
 and on TypeError exceptions, in particular those of the form:
   'BLAHType' object is not callable.
-
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Valerie Galluzzi, Mark Hays, Amanda Stouder, Aaron Wilkin,
-         their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues, and Kash.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
 ###############################################################################
 #
-# TODO: 2. READ these instructions, ASKING QUESTIONS as needed.
+# DONE: 2. READ these instructions, ASKING QUESTIONS as needed.
 #
 #   This module contains "broken" functions, as in m1.py.
 #   FOLLOW THE SAME STEPS as in the instructions of m1.py
@@ -111,7 +110,7 @@ def run_test_all():
 
 
 # -----------------------------------------------------------------------------
-# TODO: 3. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
+# DONE: 3. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
 #          to correct the mistake(s) in the following function.
 # -----------------------------------------------------------------------------
 def broken_1(circle, window):
@@ -123,21 +122,20 @@ def broken_1(circle, window):
         then draws another rg.Circle whose RADIUS
         is TWICE that of the given rg.Circle
         and whose center is the same as that of the given rg.Circle.
-        
-      Must  ** render **     but   ** NOT close **   the window.
 
+      Must  ** render **     but   ** NOT close **   the window.
     Type hints:
       :type circle: rg.Circle
       :type window: rg.RoseWindow
     """
-    circle.attach(window)
-    circle2 = rg.Circle(circle.center(), 2 * circle.r)
-    circle2.attach(circle)
-    circle2.render()
+    circle.attach_to(window)
+    circle2 = rg.Circle(circle.center, 2 * circle.radius)
+    circle2.attach_to(window)
+    window.render()
 
 
 # -----------------------------------------------------------------------------
-# TODO: 4. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
+# DONE: 4. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
 #          to correct the mistake(s) in the following function.
 # -----------------------------------------------------------------------------
 def broken_2(x, y, window):
@@ -147,21 +145,21 @@ def broken_2(x, y, window):
     Side effects:
       Draws a rg.Circle with radius 33, centered at (x, y),
         on the given rg.RoseWindow.
-      
+
       Must  ** render **     but   ** NOT close **   the window.
-          
+
     Type hints:
       :type x:      int
       :type y:      int
       :type window: rg.RoseWindow
       """
-    circle = rg.Circle(x, y)
+    circle = rg.Circle(rg.Point(x, y),33)
     circle.attach_to(window)
     window.render()
 
 
 # -----------------------------------------------------------------------------
-# TODO: 5. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
+# DONE: 5. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
 #          to correct the mistake(s) in the following function.
 # -----------------------------------------------------------------------------
 def broken_3(n, point, length, distance_between_lines, window):
@@ -178,9 +176,7 @@ def broken_3(n, point, length, distance_between_lines, window):
         point and all the rg.Lines have the given length
         and they are the given distance apart.
         Each line is drawn with a 0.5 second pause after drawing it.
-
       Must  ** render **     but   ** NOT close **   the window.
-
     Type hints:
       :type n:                      int
       :type point:                  rg.Point
@@ -192,15 +188,15 @@ def broken_3(n, point, length, distance_between_lines, window):
     b = rg.Point(point.x, point.y + length)
 
     for _ in range(n):
-        rg.Line(a, b)
-        rg.Line.attach_to(window)
+        line=rg.Line(a, b)
+        line.attach_to(window)
         window.render(0.5)
         a = rg.Point(a.x + distance_between_lines, a.y)
         b = rg.Point(b.x + distance_between_lines, b.y)
 
 
 # -----------------------------------------------------------------------------
-# TODO: 6. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
+# DONE: 6. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
 #          to correct the mistake(s) in the following function.
 # -----------------------------------------------------------------------------
 def broken_4(x, y, radius, window):
@@ -210,23 +206,24 @@ def broken_4(x, y, radius, window):
     Side effects:
       Draws a green-filled rg.Circle with the given radius,
         centered at (x, y), on the given rg.RoseWindow
-      
+
       Must  ** render **     but   ** NOT close **   the window.
-          
+
     Type hints:
       :type x:      int
       :type y:      int
       :type radius: int
       :type window: rg.RoseWindow
       """
-    line = rg.Line(rg.Point(x, y), radius)
-    line.fill_color = 'green'
-    line.attach_to(window)
+    center=rg.Point(x,y)
+    circle = rg.Circle(center, radius)
+    circle.fill_color = 'green'
+    circle.attach_to(window)
     window.render()
 
 
 # -----------------------------------------------------------------------------
-# TODO: 7. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
+# DONE: 7. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
 #          to correct the mistake(s) in the following function.
 # -----------------------------------------------------------------------------
 def broken_5(circle, window):
@@ -238,22 +235,21 @@ def broken_5(circle, window):
          both on the given rg.RoseWindow,
          with the rg.Square having the same OUTLINE color
          as the FILL color of the given rg.Circle.
-      
-      Must  ** render **     but   ** NOT close **   the window.
 
+      Must  ** render **     but   ** NOT close **   the window.
     Type hints:
       :type circle: rg.Circle
       :type window: rg.RoseWindow
     """
     circle.attach_to(window)
     square = rg.Square(circle.center, 2 * circle.radius)
-    square.outlinecolor = circle.fillcolor
+    square.outline_color = circle.fill_color
     square.attach_to(window)
     window.render()
 
 
 # -----------------------------------------------------------------------------
-# TODO: 8. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
+# DONE: 8. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
 #          to correct the mistake(s) in the following function.
 # -----------------------------------------------------------------------------
 def broken_6(n):
@@ -265,7 +261,7 @@ def broken_6(n):
     """
     total = 0
     for k in range(n):
-        total.x = total.x + (1 / (k + 1))
+        total = total + (1 / (k + 1))
 
     return total
 

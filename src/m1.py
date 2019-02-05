@@ -1,16 +1,15 @@
 """
 This module lets you practice DEBUGGING when RUN-TIME EXCEPTIONS occur.
-
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Valerie Galluzzi, Mark Hays, Amanda Stouder, Aaron Wilkin,
          their colleagues, and Kash.
-"""  # DOne: 1. PUT YOUR NAME IN THE ABOVE LINE.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
 ###############################################################################
 #
-# Done: 2. READ these instructions, ASKING QUESTIONS as needed.
+# DONE: 2. READ these instructions, ASKING QUESTIONS as needed.
 #
 #   This module contains 7 "broken" functions.
 #
@@ -155,7 +154,7 @@ def run_test_all():
 
 
 # -----------------------------------------------------------------------------
-# Done: 3. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
+# DONE: 3. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
 #          to correct the mistake(s) in the following function.
 # -----------------------------------------------------------------------------
 def broken_1(circle, window):
@@ -167,22 +166,20 @@ def broken_1(circle, window):
         then draws another rg.Circle whose RADIUS
         is TWICE that of the given rg.Circle
         and whose center is the same as that of the given rg.Circle.
-        
-      Must  ** render **     but   ** NOT close **   the window.
 
+      Must  ** render **     but   ** NOT close **   the window.
     Type hints:
       :type circle: rg.Circle
       :type window: rg.RoseWindow
     """
     circle.attach_to(window)
-    center = circle.center
-    circle2 = rg.Circle(center, circle.radius * 2)
+    circle2 = rg.Circle(circle.center, circle.radius * 2)
     circle2.attach_to(window)
     window.render()
 
 
 # -----------------------------------------------------------------------------
-# Done: 4. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
+# DONE: 4. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
 #          to correct the mistake(s) in the following function.
 # -----------------------------------------------------------------------------
 def broken_2(x, y, window):
@@ -192,9 +189,9 @@ def broken_2(x, y, window):
     Side effects:
       Draws a rg.Circle with radius 33, centered at (x, y),
         on the given rg.RoseWindow.
-      
+
       Must  ** render **     but   ** NOT close **   the window.
-          
+
     Type hints:
       :type x:      int
       :type y:      int
@@ -206,7 +203,7 @@ def broken_2(x, y, window):
 
 
 # -----------------------------------------------------------------------------
-# TODO: 5. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
+# DONE: 5. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
 #          to correct the mistake(s) in the following function.
 # -----------------------------------------------------------------------------
 def broken_3(n, point, length, distance_between_lines, window):
@@ -223,9 +220,7 @@ def broken_3(n, point, length, distance_between_lines, window):
         point and all the rg.Lines have the given length
         and they are the given distance apart.
         Each line is drawn with a 0.5 second pause after drawing it.
-
       Must  ** render **     but   ** NOT close **   the window.
-
     Type hints:
       :type n:                      int
       :type point:                  rg.Point
@@ -240,11 +235,12 @@ def broken_3(n, point, length, distance_between_lines, window):
         line = rg.Line(a, b)
         line.attach_to(window)
         window.render(0.5)
-        b = b + distance_between_lines
+        a= rg.Point(a.x + distance_between_lines,a.y)
+        b = rg.Point(b.x + distance_between_lines,b.y)
 
 
 # -----------------------------------------------------------------------------
-# TODO: 6. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
+# DONE: 6. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
 #          to correct the mistake(s) in the following function.
 # -----------------------------------------------------------------------------
 def broken_4(x, y, radius, window):
@@ -254,23 +250,23 @@ def broken_4(x, y, radius, window):
     Side effects:
       Draws a green-filled rg.Circle with the given radius,
         centered at (x, y), on the given rg.RoseWindow
-      
+
       Must  ** render **     but   ** NOT close **   the window.
-          
+
     Type hints:
       :type x:      int
       :type y:      int
       :type radius: int
       :type window: rg.RoseWindow
       """
-    circle = rg.Circle(rg.Point(x, y), 'radius')
+    circle = rg.Circle(rg.Point(x, y), radius)
     circle.fill_color = 'green'
     circle.attach_to(window)
     window.render()
 
 
 # -----------------------------------------------------------------------------
-# TODO: 7. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
+# DONE: 7. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
 #          to correct the mistake(s) in the following function.
 # -----------------------------------------------------------------------------
 def broken_5(circle, window):
@@ -279,23 +275,22 @@ def broken_5(circle, window):
     What goes out:  Nothing (i.e., None).
     Side effects:
       Draws the given rg.Circle and an rg.Square that circumscribes it,
-         both on the given rg.RoseWindow. 
-      
-      Must  ** render **     but   ** NOT close **   the window.
+         both on the given rg.RoseWindow.
 
+      Must  ** render **     but   ** NOT close **   the window.
     Type hints:
       :type circle: rg.Circle
       :type window: rg.RoseWindow
     """
     circle.attach_to(window)
-    square = rg.Square(circle.center)
+    square = rg.Square(circle.center,circle.radius*2)
     square.outline_color = circle.fill_color
     square.attach_to(window)
     window.render()
 
 
 # -----------------------------------------------------------------------------
-# TODO: 8. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
+# DONE: 8. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
 #          to correct the mistake(s) in the following function.
 # -----------------------------------------------------------------------------
 def broken_6(n):
@@ -306,14 +301,14 @@ def broken_6(n):
     Side effects:   None.
     """
     total = 0
-    for k in range(n + 1):
-        total = total + 1 / k
+    for k in range(n):
+        total = total + 1 / (k+1)
 
     return total
 
 
 # -----------------------------------------------------------------------------
-# TODO: 9. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
+# DONE: 9. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
 #          to correct the mistake(s) in the following function.
 # -----------------------------------------------------------------------------
 def broken_7(n, point, length, distance_between_lines, window):
@@ -331,7 +326,6 @@ def broken_7(n, point, length, distance_between_lines, window):
         and they are the given distance apart.
         Each line is drawn with a 0.5 second pause after drawing it.
       Must  ** render **     but   ** NOT close **   the window.
-
     Type hints:
       :type n:                      int
       :type point:                  rg.Point
@@ -345,10 +339,10 @@ def broken_7(n, point, length, distance_between_lines, window):
     for _ in range(n):
         line = rg.Line(left, right)
         line.attach_to(window)
-        window.render(0.5)
         left = rg.Point(left.x, left.y + distance_between_lines)
         right = rg.Point(right.x, right.y + distance_between_lines)
-    window.close_on_mouse_click()
+
+    window.render(0.5)
 
 
 # -----------------------------------------------------------------------------
